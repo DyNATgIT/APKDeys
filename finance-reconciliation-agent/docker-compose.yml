@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  reconciliation-agent:
+    build: .
+    container_name: finance-reconciliation-agent
+    volumes:
+      - ./logs:/app/logs
+      - ./reports:/app/reports
+      - ./data:/app/data
+    environment:
+      - ENVIRONMENT=production
+      - DEBUG=false
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY}
+      - ERP_BASE_URL=${ERP_BASE_URL}
+      - ERP_API_KEY=${ERP_API_KEY}
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana-data:/var/lib/grafana
+
+volumes:
+  grafana-data:

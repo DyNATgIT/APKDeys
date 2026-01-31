@@ -1,0 +1,26 @@
+[
+    {
+        "transaction_id": "AP-0001",
+        "transaction_type": "accounts_payable",
+        "amount": 1500.00,
+        "currency": "USD",
+        "date": "2024-01-15",
+        "vendor_id": "VENDOR-001",
+        "invoice_number": "INV-000001",
+        "po_number": "PO-00001",
+        "description": "Office supplies purchase",
+        "account_code": "4100"
+    },
+    {
+        "transaction_id": "AP-0002",
+        "transaction_type": "accounts_payable",
+        "amount": 3250.75,
+        "currency": "USD",
+        "date": "2024-01-18",
+        "vendor_id": "VENDOR-002",
+        "invoice_number": "INV-000002",
+        "po_number": "PO-00002",
+        "description": "IT equipment maintenance",
+        "account_code": "5100"
+    }
+]
